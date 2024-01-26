@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter UI Kits</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img {
+            height: 300px; /* Set a fixed height */
+            object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 3px solid #000; /* Add a border to each image */
+            box-sizing: border-box; /* Include border in the total width and height */
+        }
+
+        img.gf {
+            width: 300px; /* Set a different width for images with 'gf' in the URL */
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Define an array of image URLs and corresponding destination URLs
+        const imageData = [
+            { imageUrl: 'images/glow.png', clickUrl: 'https://pub.dev/packages/flutter_glow' },
+            { imageUrl: 'images/story.gif', clickUrl: 'https://pub.dev/packages/story' },
+            { imageUrl: 'images/japan.gif', clickUrl: 'https://pub.dev/packages/styled_widget' },
+            { imageUrl: 'images/japan2.gif', clickUrl: 'https://pub.dev/packages/styled_widget' },
+            { imageUrl: 'images/scrutil.png', clickUrl: 'https://pub.dev/packages/flutter_screenutil' },
+            { imageUrl: 'images/calendar.png', clickUrl: 'https://pub.dev/packages/calendar_view' },
+            { imageUrl: 'images/timeline.png', clickUrl: 'https://pub.dev/packages/timelines' },
+            { imageUrl: 'images/motiontabbar.gif', clickUrl: 'https://pub.dev/packages/motion_tab_bar_v2' },
+            { imageUrl: 'images/responsive.png', clickUrl: 'https://pub.dev/packages/responsive_framework' },
+            { imageUrl: 'images/animbg.png', clickUrl: 'https://pub.dev/packages/animated_background' },
+            { imageUrl: 'images/chart1.png', clickUrl: 'https://pub.dev/packages/fl_chart' },
+            { imageUrl: 'images/neumorph.png', clickUrl: 'https://pub.dev/packages/flutter_neumorphic' },
+            { imageUrl: 'images/chart2.png', clickUrl: 'https://pub.dev/packages/fl_chart' },
+            { imageUrl: 'images/animbtn.gif', clickUrl: 'https://pub.dev/packages/flutter_animated_button' },
+            { imageUrl: 'images/bstrap.gif', clickUrl: 'https://pub.dev/packages/flutter_bootstrap' },
+            { imageUrl: 'images/stickyheader.gif', clickUrl: 'https://pub.dev/packages/sticky_headers' },
+            { imageUrl: 'images/fa.png', clickUrl: 'https://pub.dev/packages/font_awesome_flutter' },
+            { imageUrl: 'images/gradien1.png', clickUrl: 'https://pub.dev/packages/gradient_widgets' },
+            { imageUrl: 'images/gradien2.png', clickUrl: 'https://pub.dev/packages/gradient_widgets' },
+            { imageUrl: 'images/flutmenu.gif', clickUrl: 'https://pub.dev/packages/flutter_menu' },
+            { imageUrl: 'images/avatars.png', clickUrl: 'https://pub.dev/packages/flutter_next' },
+            { imageUrl: 'images/breadcrumb.png', clickUrl: 'https://pub.dev/packages/flutter_next' },
+            { imageUrl: 'images/gfbtn.webp', clickUrl: 'https://docs.getwidget.dev/gf-button/' },
+            { imageUrl: 'images/gfbadges.webp', clickUrl: 'https://docs.getwidget.dev/gf-badge/' },
+            { imageUrl: 'images/gfavatars.webp', clickUrl: 'https://docs.getwidget.dev/gf-avatar/' },
+            { imageUrl: 'images/gfoverlay.png', clickUrl: 'https://docs.getwidget.dev/gf-image/' },
+            { imageUrl: 'images/gfcard1.webp', clickUrl: 'https://docs.getwidget.dev/gf-card/' },
+            { imageUrl: 'images/gfcard2.png', clickUrl: 'https://docs.getwidget.dev/gf-card/' },
+            { imageUrl: 'images/gfcarousel.webp', clickUrl: 'https://docs.getwidget.dev/gf-carousel/' },
+            { imageUrl: 'images/gftiles.webp', clickUrl: 'https://docs.getwidget.dev/gf-tile/' },
+            { imageUrl: 'images/gftabbar.webp', clickUrl: 'https://docs.getwidget.dev/gf-tab/' },
+            { imageUrl: 'images/gffloating.webp', clickUrl: 'https://docs.getwidget.dev/gf-floating-widget/' },
+            { imageUrl: 'images/gftoast.webp', clickUrl: 'https://docs.getwidget.dev/gf-toast/' },
+            { imageUrl: 'images/gftoggle.webp', clickUrl: 'https://docs.getwidget.dev/gf-toggle/' },
+            { imageUrl: 'images/gftypo.webp', clickUrl: 'https://docs.getwidget.dev/gf-typography/' },
+            { imageUrl: 'images/gfdrawer.webp', clickUrl: 'https://docs.getwidget.dev/gf-drawer/' },
+            { imageUrl: 'images/gfacordion.webp', clickUrl: 'https://docs.getwidget.dev/gf-accordion/' },
+            { imageUrl: 'images/gfalert.webp', clickUrl: 'https://docs.getwidget.dev/gf-alert/' },
+            { imageUrl: 'images/gfappbar.webp', clickUrl: 'https://docs.getwidget.dev/gf-app-bar/' },
+            { imageUrl: 'images/gfsearch.webp', clickUrl: 'https://docs.getwidget.dev/gf-searchbar/' },
+            { imageUrl: 'images/gfrating.webp', clickUrl: 'https://docs.getwidget.dev/gf-rating/' },
+            { imageUrl: 'images/gfddown.webp', clickUrl: 'https://docs.getwidget.dev/gf-dropdown/' },
+            { imageUrl: 'images/gfloader.webp', clickUrl: 'https://docs.getwidget.dev/gf-loader/' },
+            { imageUrl: 'images/gfprogbar.webp', clickUrl: 'https://docs.getwidget.dev/gf-progress-bar/' },
+            { imageUrl: 'images/gfshimmer.webp', clickUrl: 'https://docs.getwidget.dev/gf-shimmer/' },
+            { imageUrl: 'images/gfanim.webp', clickUrl: 'https://docs.getwidget.dev/gf-animation/' },
+            { imageUrl: 'images/gfborder.webp', clickUrl: 'https://docs.getwidget.dev/gf-border/' },
+            { imageUrl: 'images/gfbotsheet.webp', clickUrl: 'https://docs.getwidget.dev/gf-bottom-sheet/' },
+            { imageUrl: 'images/gfcheckbox.webp', clickUrl: 'https://docs.getwidget.dev/gf-checkbox/' },
+            { imageUrl: 'images/gfcblist.webp', clickUrl: 'https://docs.getwidget.dev/gf-checkbox-listtile/' },
+            { imageUrl: 'images/gfmultiselect.webp', clickUrl: 'https://docs.getwidget.dev/gf-multiselect/' },
+            { imageUrl: 'images/gfintro.webp', clickUrl: 'https://docs.getwidget.dev/gf-intro-screen/' },
+            { imageUrl: 'images/gfradio.webp', clickUrl: 'https://docs.getwidget.dev/gf-radio/' },
+            { imageUrl: 'images/gfradiolist.webp', clickUrl: 'https://docs.getwidget.dev/gf-radio-listtile/' },
+            { imageUrl: 'images/gfstickyheader.webp', clickUrl: 'https://docs.getwidget.dev/gf-sticky-header/' },
+            { imageUrl: 'images/spinkit.gif', clickUrl: 'https://pub.dev/packages/flutter_spinkit' },
+            { imageUrl: 'images/woldsheet.gif', clickUrl: 'https://pub.dev/packages/wolt_modal_sheet' },
+            { imageUrl: 'images/nativesplash.gif', clickUrl: 'https://pub.dev/packages/flutter_native_splash' },
+            { imageUrl: 'images/platfdialog.png', clickUrl: 'https://pub.dev/packages/flutter_dialogs' },
+            { imageUrl: 'images/scview.png', clickUrl: 'https://pub.dev/packages/showcaseview' },
+            { imageUrl: 'images/infscroll.gif', clickUrl: 'https://pub.dev/packages/infinite_scroll_pagination' },
+            { imageUrl: 'images/expfab1.gif', clickUrl: 'https://pub.dev/packages/flutter_expandable_fab' },
+            { imageUrl: 'images/expfab2.gif', clickUrl: 'https://pub.dev/packages/flutter_expandable_fab' },
+            { imageUrl: 'images/expfab3.gif', clickUrl: 'https://pub.dev/packages/flutter_expandable_fab' },
+            { imageUrl: 'images/flutter_form.gif', clickUrl: 'https://pub.dev/packages/flutter_form_builder' },
+            { imageUrl: 'images/quds.gif', clickUrl: 'https://pub.dev/packages/quds_ui_kit' },
+            // Add more image data as needed
+        ];
+
+        // Function to create and append image elements to the body
+        function createImageGrid() {
+            const body = document.body;
+
+            imageData.forEach(data => {
+                const imageDiv = document.createElement('div');
+                const link = document.createElement('a');
+                const image = document.createElement('img');
+
+                link.href = data.clickUrl;
+                image.src = data.imageUrl;
+                // image.alt = data.tag; // Include the tag in the alt attribute
+
+                if (data.imageUrl.startsWith('images/gf')) {
+                    image.classList.add('gf');
+                }
+
+                link.appendChild(image);
+                imageDiv.appendChild(link);
+                body.appendChild(imageDiv);
+            });
+        }
+
+        // Call the function to create the image grid
+        createImageGrid();
+    </script>
+
+</body>
+</html>
